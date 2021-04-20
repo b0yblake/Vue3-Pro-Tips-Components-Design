@@ -8,7 +8,7 @@ CONTENT
 `SANBOX CODE`: [building-controlled-components](https://codesandbox.io/s/oxxlx055xy?from-embed)
 
 - Khi thao tác với `form elements`(input, checkbox, select,..) hãy linh động trong việc xử lý các `$emit` và `props` => hãy tách các `form elements` thành các components riêng lẻ và để trong `global components / common components` <br>
-<img src="@img-readme/v-model-tip.jpg" alt="" width="500px" height="auto"><br/>
+<img src="@img-readme/simple.jpg" alt="" width="500px" height="auto"><br/>
 
 - Hãy sử dụng `emit gộp` của Vue3 để việc control được hiệu quả hơn
 ```
@@ -61,7 +61,7 @@ emits: {
 
 <div id="customizing-controlled-component-bindings"></div><br>
 
-## Chap 1 : CUSTOMIZING CONTROLLED COMPONENT BINDINGS
+## Chap 2 : CUSTOMIZING CONTROLLED COMPONENT BINDINGS
 
 `SANBOX CODE`: [customizing-controlled-component-bindings](https://codesandbox.io/s/mqnzm84plx?from-embed)
 
