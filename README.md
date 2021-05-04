@@ -170,6 +170,29 @@ watchEffect(() => {
 `SANBOX CODE`: [encapsulating-external-behavior-portals](https://codesandbox.io/s/vy0k8283o5?from-embed)
 
 NOTE: <br>
+✔ Với các `dialog` trên từng component, hãy cứ viết ở trên các components để dễ handle data, sau đó sử dụng `teleport` kết hợp với `slot` <br>
+✔ Việc handle data của tất cả các popup ở cùng 1 component trung gian đem lại hiệu quả rõ rệt so với việc handle data tại các component common <br>
+https://github.com/b0yblake/Vue3-Form-Best-Practice/blob/main/src/views/Form.vue <br>
+
+```
+//index.html
+<body>
+  <div id="app"></div>
+  <!-- Use teleport to move dialog to here -->
+  <div id="layer"></div>
+</body>
+
+// Component
+<teleport to="#layer">
+  <some-component-dialog :data="data" @click="some-element" />
+</teleport>
+```
+
+## Chap 7 : ENCAPSULATING EXTERNAL RESING PORTALS
+
+`SANBOX CODE`: [encapsulating-external-behavior-reusing-portals](https://codesandbox.io/s/xv1ooy9v1p?from-embed)
+
+NOTE: <br>
 ✔ 
 
 
@@ -204,8 +227,6 @@ NOTE: <br>
 
 
 
-
-7. [encapsulating-external-behavior-reusing-portals](https://codesandbox.io/s/xv1ooy9v1p?from-embed)
 8. [injecting-content-using-slots](https://codesandbox.io/s/8x54ow4vl9?from-embed)
 9. [native-style-buttons-using-slots-and-class-merging](https://codesandbox.io/s/j4m180n11v?from-embed)
 10. [extending-components-using-composition](https://codesandbox.io/s/jj8vjjxlk9?from-embed)
