@@ -7,6 +7,13 @@ CONTENT
 
 `SANBOX CODE`: [building-controlled-components](https://codesandbox.io/s/oxxlx055xy?from-embed)
 
+NOTE:
+✔ Bản chất của `v-model` là việc lắng nghe `input`(:modelValue="pageTitle") và emit dữ liệu(@update:modelValue="pageTitle = $event")
+✔ `v-model` chỉ nên dùng cho `input` và `component` => không nên sử dụng cho các thành phần khác
+✔ Sử dụng `emit` và `gộp các emit`
+✔ `form` tối ưu bằng cách loại bỏ real-time sync in input `@input.once` => chỉ check khi click submit
+✔ Sử dụng `Object.fromEntries(new FormData(event.target))` thay cho `v-model` nếu dùng với form nhiều thành phần
+
 - Khi thao tác với `form elements`(input, checkbox, select,..) hãy linh động trong việc xử lý các `$emit` và `props` => hãy tách các `form elements` thành các components riêng lẻ và để trong `global components / common components` <br>
 <img src="@img-readme/simple-form.jpg" alt="" width="500px" height="auto"><br/>
 
@@ -28,20 +35,37 @@ onYourEvent(yourDataIfYouHaveAny) {
 }
 
 // Gộp các emit trong 1 setup
-methods: {
-  isSelected : {
-    this.$emit = ('toggle-favorite')
-  }
-},
-emits: {
-  'toggle-favorite': function(id) {
-    // some condition
+<ChildComponent v-model="pageTitle" />
+
+export default {
+  props: {
+    modelValue: String // previously was `value: String`
+  },
+  emits: ['update:modelValue'],
+  methods: {
+    changePageTitle(title) {
+      this.$emit('update:modelValue', title) // previously was `this.$emit('input', title)`
+    }
   }
 }
 ```
 
 - Sử dụng `v-model` làm tối giản lại phong cách code và nhanh gọn <br>
+Vue 2: <br>
 <img src="@img-readme/v-model-tip.jpg" alt="" width="500px" height="auto"><br/>
+
+```
+Vue 3 thay đổi syntax của v-model:
+
+<ChildComponent v-model="pageTitle" />
+
+<!-- shorthand for: -->
+<ChildComponent
+  :modelValue="pageTitle"
+  @update:modelValue="pageTitle = $event"
+/>
+
+```
 
 - `v-model` có thể sử dụng với các element không thuộc hệ thống `form elements` => với điều kiện chỉ có 1 element duy nhất có trong `component`
 
@@ -50,7 +74,7 @@ emits: {
 <input @input="email = $event.target.value">
 
 // Special with element not belong to form
-<some-component :value="newLetter" @input="(newValue) => { newLetter = newValue }"></some-component>
+<some-component :modelValue="newLetter" @update:modelValue="(newValue) => { newLetter = newValue }"></some-component>
 ```
 
 - Việc lắng nghe liên tục mọi `keydown` || `clicked` khi `end-user` thao tác trên form chỉ thực sự đúng đắn khi làm việc với `reactive form` (form muốn response trực tiếp hành động của user) => hãy tối giản bằng việc khi `submit mới lắng nghe` => giải phóng được 1 phần bộ nhớ và giảm tình trạng lag nếu làm với super form.
@@ -65,7 +89,85 @@ emits: {
 
 `SANBOX CODE`: [customizing-controlled-component-bindings](https://codesandbox.io/s/mqnzm84plx?from-embed)
 
-- 
+NOTE:
+✔ `v-model` default sẽ không được tự nhiên vì sử dụng `modelValue` & `update:modelValue` => có thể custom bằng các value cụ thể
+
+```
+//Parent
+<Custom-component v-model:message="message" />
+
+//Child
+<input type="text" :value="message" @input='emit("update:message", $event.target.value);'>
+```
+## Chap 3 : WRAPPING EXTERNAL LIBRARIES AS VUE COMPONENTS
+
+`SANBOX CODE`: [wrapping-external-libraries-as-vue-components](https://codesandbox.io/s/n4qolyr42m?from-embed)
+
+NOTE:
+✔ Hãy chú ý sử dụng các method có sẵn của lib để custom lại các event
+
+- Đôi khi, việc thêm 1 thư viện ngoài(datePicker) vào để gọi trong input gây phiền toái nhất định: $event chọn ngày không cập nhật với biến ref thông thường. Vì chúng không được tạo ra để sync với biến đó => hãy sử dụng các custom event của lib (onSelect()) để xác định event click day. <br>
+- https://github.com/b0yblake/Vue3-Form-Best-Practice/blob/main/src/components/common/form/DatepickerPikaday.vue
+
+## Chap 4 : ENCAPSULATING EXTERNAL BEHAVIOR CLOSING ON ESCAPE
+
+`SANBOX CODE`: [encapsulating-external-behavior-closing-on-escape](https://codesandbox.io/s/1v1o4lvp9j?from-embed)
+
+NOTE: 
+✔ `Web accessibility` luôn luôn đặt lên hàng đầu mỗi khi thao tác với dialog
+✔ Dialog khi bật lên cần được kiểm soát cả ở phần `keyboard`: `close = esc, enter, blankspace`
+✔ Hành vi người dùng cần được chú trọng khi họ dùng `keyboard`
+✔ Đối với những DOM sinh ra sau `lifecycle:created`, nếu muốn control được, nên sử dụng `nextTick` hoặc sử dụng vanila js tại thời điểm click
+✔ Hãy linh động trong việc sử dụng js, chú ý đến việc tối ưu hiệu suất (dùng js tối ưu được hiệu suất ngay tại component do không phải `v-model` 2way-binding)
+
+```
+Way1: sử dụng keydown = esc button, enable tabindex để có thể focus được 
+@keydown.esc="handleEsc" tabindex="0" ref="dialog"
+
+Way2: sử dụng vanila js nhằm bắt sự kiện click tại thời điểm dialog đã sinh ra (không cần care về việc sinh ra hay sau dom update)
+
+=======================
+methods: {
+  createClickEvent: function() {
+    let self = this;
+
+    document
+      .querySelector(".util_per_pay_rate .btn_open_dialog")
+      .addEventListener("click", function() {
+        self.dialog = true;
+      });
+  }
+},
+mounted() {
+  this.createClickEvent();
+}
+========================
+created() {
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && this.show) {
+      this.createClickEvent();
+    }
+  })
+}
+```
+
+## Chap 5 : ENCAPSULATING EXTERNAL BEHAVIOR BACKGROUND SCROLLING
+
+`SANBOX CODE`: [encapsulating-external-behavior-background-scrolling](https://codesandbox.io/s/z0mx3w9km?from-embed)
+
+NOTE: 
+✔ Khi bật `Dialog` vấn đề gặp phải là chúng ta cần remove scroll: hãy chú ý về cách sử dụng bằng class toggle tại body => chúng sẽ hữu hiệu khi chúng ta handle được, còn không => hãy sử dụng vanila js
+✔ Hãy cố gắng cover 1-2 case tiếp theo sau này khi mở rộng app
+
+```
+watchEffect(() => {
+  props.active ? props.preventBackgroundScrolling && document.body.style.setProperty('overflow', 'hidden') : props.preventBackgroundScrolling && document.body.style.setProperty('overflow')
+})
+```
+
+## Chap 5 : ENCAPSULATING EXTERNAL BEHAVIOR PORTALS
+
+`SANBOX CODE`: [encapsulating-external-behavior-portals](https://codesandbox.io/s/vy0k8283o5?from-embed)
 
 
 
@@ -102,15 +204,6 @@ emits: {
 
 
 
-
-
-
-
-
-3. [wrapping-external-libraries-as-vue-components](https://codesandbox.io/s/n4qolyr42m?from-embed)
-4. [encapsulating-external-behavior-closing-on-escape](https://codesandbox.io/s/1v1o4lvp9j?from-embed)
-5. [encapsulating-external-behavior-background-scrolling](https://codesandbox.io/s/z0mx3w9km?from-embed)
-6. [encapsulating-external-behavior-portals](https://codesandbox.io/s/vy0k8283o5?from-embed)
 7. [encapsulating-external-behavior-reusing-portals](https://codesandbox.io/s/xv1ooy9v1p?from-embed)
 8. [injecting-content-using-slots](https://codesandbox.io/s/8x54ow4vl9?from-embed)
 9. [native-style-buttons-using-slots-and-class-merging](https://codesandbox.io/s/j4m180n11v?from-embed)
