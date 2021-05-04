@@ -7,12 +7,12 @@ CONTENT
 
 `SANBOX CODE`: [building-controlled-components](https://codesandbox.io/s/oxxlx055xy?from-embed)
 
-NOTE:
-✔ Bản chất của `v-model` là việc lắng nghe `input`(:modelValue="pageTitle") và emit dữ liệu(@update:modelValue="pageTitle = $event")
-✔ `v-model` chỉ nên dùng cho `input` và `component` => không nên sử dụng cho các thành phần khác
-✔ Sử dụng `emit` và `gộp các emit`
-✔ `form` tối ưu bằng cách loại bỏ real-time sync in input `@input.once` => chỉ check khi click submit
-✔ Sử dụng `Object.fromEntries(new FormData(event.target))` thay cho `v-model` nếu dùng với form nhiều thành phần
+NOTE: <br>
+✔ Bản chất của `v-model` là việc lắng nghe `input`(:modelValue="pageTitle") và emit dữ liệu(@update:modelValue="pageTitle = $event") <br>
+✔ `v-model` chỉ nên dùng cho `input` và `component` => không nên sử dụng cho các thành phần khác <br>
+✔ Sử dụng `emit` và `gộp các emit` <br>
+✔ `form` tối ưu bằng cách loại bỏ real-time sync in input `@input.once` => chỉ check khi click submit <br>
+✔ Sử dụng `Object.fromEntries(new FormData(event.target))` thay cho `v-model` nếu dùng với form nhiều thành phần <br>
 
 - Khi thao tác với `form elements`(input, checkbox, select,..) hãy linh động trong việc xử lý các `$emit` và `props` => hãy tách các `form elements` thành các components riêng lẻ và để trong `global components / common components` <br>
 <img src="@img-readme/simple-form.jpg" alt="" width="500px" height="auto"><br/>
@@ -89,8 +89,8 @@ Vue 3 thay đổi syntax của v-model:
 
 `SANBOX CODE`: [customizing-controlled-component-bindings](https://codesandbox.io/s/mqnzm84plx?from-embed)
 
-NOTE:
-✔ `v-model` default sẽ không được tự nhiên vì sử dụng `modelValue` & `update:modelValue` => có thể custom bằng các value cụ thể
+NOTE: <br>
+✔ `v-model` default sẽ không được tự nhiên vì sử dụng `modelValue` & `update:modelValue` => có thể custom bằng các value cụ thể <br>
 
 ```
 //Parent
@@ -103,8 +103,8 @@ NOTE:
 
 `SANBOX CODE`: [wrapping-external-libraries-as-vue-components](https://codesandbox.io/s/n4qolyr42m?from-embed)
 
-NOTE:
-✔ Hãy chú ý sử dụng các method có sẵn của lib để custom lại các event
+NOTE: <br>
+✔ Hãy chú ý sử dụng các method có sẵn của lib để custom lại các event <br>
 
 - Đôi khi, việc thêm 1 thư viện ngoài(datePicker) vào để gọi trong input gây phiền toái nhất định: $event chọn ngày không cập nhật với biến ref thông thường. Vì chúng không được tạo ra để sync với biến đó => hãy sử dụng các custom event của lib (onSelect()) để xác định event click day. <br>
 - https://github.com/b0yblake/Vue3-Form-Best-Practice/blob/main/src/components/common/form/DatepickerPikaday.vue
@@ -113,12 +113,12 @@ NOTE:
 
 `SANBOX CODE`: [encapsulating-external-behavior-closing-on-escape](https://codesandbox.io/s/1v1o4lvp9j?from-embed)
 
-NOTE: 
-✔ `Web accessibility` luôn luôn đặt lên hàng đầu mỗi khi thao tác với dialog
-✔ Dialog khi bật lên cần được kiểm soát cả ở phần `keyboard`: `close = esc, enter, blankspace`
-✔ Hành vi người dùng cần được chú trọng khi họ dùng `keyboard`
-✔ Đối với những DOM sinh ra sau `lifecycle:created`, nếu muốn control được, nên sử dụng `nextTick` hoặc sử dụng vanila js tại thời điểm click
-✔ Hãy linh động trong việc sử dụng js, chú ý đến việc tối ưu hiệu suất (dùng js tối ưu được hiệu suất ngay tại component do không phải `v-model` 2way-binding)
+NOTE: <br>
+✔ `Web accessibility` luôn luôn đặt lên hàng đầu mỗi khi thao tác với dialog <br>
+✔ Dialog khi bật lên cần được kiểm soát cả ở phần `keyboard`: `close = esc, enter, blankspace` <br>
+✔ Hành vi người dùng cần được chú trọng khi họ dùng `keyboard` <br>
+✔ Đối với những DOM sinh ra sau `lifecycle:created`, nếu muốn control được, nên sử dụng `nextTick` hoặc sử dụng vanila js tại thời điểm click <br>
+✔ Hãy linh động trong việc sử dụng js, chú ý đến việc tối ưu hiệu suất (dùng js tối ưu được hiệu suất ngay tại component do không phải `v-model` 2way-binding) <br>
 
 ```
 Way1: sử dụng keydown = esc button, enable tabindex để có thể focus được 
@@ -155,9 +155,9 @@ created() {
 
 `SANBOX CODE`: [encapsulating-external-behavior-background-scrolling](https://codesandbox.io/s/z0mx3w9km?from-embed)
 
-NOTE: 
-✔ Khi bật `Dialog` vấn đề gặp phải là chúng ta cần remove scroll: hãy chú ý về cách sử dụng bằng class toggle tại body => chúng sẽ hữu hiệu khi chúng ta handle được, còn không => hãy sử dụng vanila js
-✔ Hãy cố gắng cover 1-2 case tiếp theo sau này khi mở rộng app
+NOTE: <br>
+✔ Khi bật `Dialog` vấn đề gặp phải là chúng ta cần remove scroll: hãy chú ý về cách sử dụng bằng class toggle tại body => chúng sẽ hữu hiệu khi chúng ta handle được, còn không => hãy sử dụng vanila js <br>
+✔ Hãy cố gắng cover 1-2 case tiếp theo sau này khi mở rộng app <br>
 
 ```
 watchEffect(() => {
@@ -165,11 +165,12 @@ watchEffect(() => {
 })
 ```
 
-## Chap 5 : ENCAPSULATING EXTERNAL BEHAVIOR PORTALS
+## Chap 6 : ENCAPSULATING EXTERNAL BEHAVIOR PORTALS
 
 `SANBOX CODE`: [encapsulating-external-behavior-portals](https://codesandbox.io/s/vy0k8283o5?from-embed)
 
-
+NOTE: <br>
+✔ 
 
 
 
