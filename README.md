@@ -13,24 +13,25 @@ NOTE: <br>
 ✔ Sử dụng `emit` và `gộp các emit` <br>
 ✔ `form` tối ưu bằng cách loại bỏ real-time sync in input `@input.once` => chỉ check khi click submit <br>
 ✔ Sử dụng `Object.fromEntries(new FormData(event.target))` thay cho `v-model` nếu dùng với form nhiều thành phần <br>
+✔ Khi `emit`data, chỉ sử dụng từ `update:someModelValue` khi thao tác với `v-model` => với các component thì bỏ từ `update` để tránh gây hiểu nhầm <br>
 
 - Khi thao tác với `form elements`(input, checkbox, select,..) hãy linh động trong việc xử lý các `$emit` và `props` => hãy tách các `form elements` thành các components riêng lẻ và để trong `global components / common components` <br>
 <img src="@img-readme/simple-form.jpg" alt="" width="500px" height="auto"><br/>
 
 - Hãy sử dụng `emit gộp` của Vue3 để việc control được hiệu quả hơn
 ```
-// Emit thông thường
-this.$emit('myEvent', data)
-<my-component @my-event="doSomething"></my-component>
+https://v3.vuejs.org/guide/component-custom-events.html#event-names
+===================
 
 // Emit with Vue3: setup(...)
+emits: ['your-event', 'handle-confirm-del-data'],
 setup(props, { emit }) { 
   ...
-  emit('yourEvent', yourDataIfYouHaveAny);
-  // Hoặc sử dụng context(attrs, slots, emit) cho nó ngắn: setup(props, context) {} || context.emit('yourEvent', yourDataIfYouHaveAny);
+  emit('your-event', dataWantToEmit); // Hoặc sử dụng context(attrs, slots, emit) cho nó ngắn: setup(props, context) {} || context.emit('yourEvent', dataWantToEmit);
+  emit("handle-confirm-del-data", false); //data to close del dialog
 }
-<your-child @yourEvent="onYourEvent" />
-onYourEvent(yourDataIfYouHaveAny) {
+<your-child @your-event="onYourEvent" />
+onYourEvent(dataWantToEmit) {
   ...
 }
 
@@ -75,6 +76,21 @@ Vue 3 thay đổi syntax của v-model:
 
 // Special with element not belong to form
 <some-component :modelValue="newLetter" @update:modelValue="(newValue) => { newLetter = newValue }"></some-component>
+```
+
+```
+//Child component
+setup(props, { emit }) {
+   ...
+   emit('your-event', dataWantToEmit);
+}
+
+//Parent component
+<your-child @your-event="onYourEvent" />
+
+onYourEvent(dataWantToEmit) {
+  console.log(dataWantToEmit)
+}
 ```
 
 - Việc lắng nghe liên tục mọi `keydown` || `clicked` khi `end-user` thao tác trên form chỉ thực sự đúng đắn khi làm việc với `reactive form` (form muốn response trực tiếp hành động của user) => hãy tối giản bằng việc khi `submit mới lắng nghe` => giải phóng được 1 phần bộ nhớ và giảm tình trạng lag nếu làm với super form.
@@ -193,7 +209,117 @@ https://github.com/b0yblake/Vue3-Form-Best-Practice/blob/main/src/views/Form.vue
 `SANBOX CODE`: [encapsulating-external-behavior-reusing-portals](https://codesandbox.io/s/xv1ooy9v1p?from-embed)
 
 NOTE: <br>
-✔ 
+✔ `teleport` hiệu quả với multiple => cái nào được move trước sẽ xuất hiện trước <br>
+
+## Chap 8 : INJECTING CONTENT USING SLOTS
+
+`SANBOX CODE`: [injecting-content-using-slots](https://codesandbox.io/s/8x54ow4vl9?from-embed)
+
+NOTE: <br>
+✔ `SLOT` là 1 tính năng cực kỳ hay ho cho việc tái sử dụng tối đa số lần components xuất hiện. <br>
+✔ Việc kết hợp cùng với class tại `component tag` cũng đem lại sự tiện lợi cho việc tái xử dụng component <br>
+
+```
+// Tái sử dụng với trường hợp đặt các case cố định cho các vùng của header
+// Parent
+<dialog>
+  <template #header>
+    <h1>Dialog main</h1>
+  </template>
+  <template #default>
+    <h1>Dialog main</h1>
+  </template>
+  ...
+</dialog>
+
+// Child popup
+<template>
+  <div class="c-base-popup">
+    <div v-if="??" class="c-base-popup__header">
+      <slot name="header"></slot>
+    </div>
+    <div v-if="??" class="c-base-popup__subheader">
+      <slot name="subheader"></slot>
+    </div>
+    <div class="c-base-popup__body">
+
+      //Default slot
+      <slot></slot> 
+
+      <h1>{{ title }}</h1>
+      <p v-if="description">{{ description }}</p>
+    </div>
+    <div v-if="??" class="c-base-popup__actions">
+      <slot name="actions"></slot>
+    </div>
+    <div v-if="??" class="c-base-popup__footer">
+      <slot name="footer"></slot>
+    </div>
+  </div>
+</template>
+```
+
+## Chap 9 : NATIVE STYLE BUTTONS USING SLOTS AND CLASS MERGING
+
+`SANBOX CODE`: [native-style-buttons-using-slots-and-class-merging](https://codesandbox.io/s/j4m180n11v?from-embed)
+
+NOTE: <br>
+✔ CLass có thể merging giữa component tag & first-element-in-component <br>
+
+```
+<!-- Common dialog -->
+<BadgeDialog :dataDialog="form" v-model:active="activeDialog" v-show="activeDialog" class="flex">
+
+// BadgeDialog component
+<template>
+  <div class="nes-dialog abc" id="badge-dialog"></div>
+</template>
+
+// Result
+<div class="nes-dialog abc flex" id="badge-dialog"></div>
+```
+
+## Chap 10 : EXTENDING COMPONENTS USING COMPOSITION
+
+`SANBOX CODE`: [extending-components-using-composition](https://codesandbox.io/s/jj8vjjxlk9?from-embed)
+
+NOTE: <br>
+✔ Chú ý khi sử dụng compositionAPI => cấu trúc `ref & reactive` sẽ gây khó khăn <br>
+
+```
+//Sử dụng Object.assign cho custom hook (composables)
+
+  setup() {
+    const initialState = {
+      name: "",
+      lastName: "",
+      email: ""
+    };
+
+    const form = reactive({ ...initialState });
+
+    function resetForm() {
+      Object.assign(form, initialState);
+    }
+
+    function setForm() {
+      Object.assign(form, {
+        name: "John",
+        lastName: "Doe",
+        email: "john@doe.com"
+      });
+    }
+
+    return { form, setForm, resetForm };
+  }
+```
+
+## Chap 11 : PASSING DATA UP USING SCOPED SLOTS
+
+`SANBOX CODE`: [passing-data-up-using-scoped-slots](https://codesandbox.io/s/nwz1xpkyl0?from-embed)
+
+NOTE: <br>
+✔
 
 
 
@@ -217,20 +343,7 @@ NOTE: <br>
 
 
 
-
-
-
-
-
-
-
-
-
-
-8. [injecting-content-using-slots](https://codesandbox.io/s/8x54ow4vl9?from-embed)
-9. [native-style-buttons-using-slots-and-class-merging](https://codesandbox.io/s/j4m180n11v?from-embed)
-10. [extending-components-using-composition](https://codesandbox.io/s/jj8vjjxlk9?from-embed)
-11. [passing-data-up-using-scoped-slots](https://codesandbox.io/s/nwz1xpkyl0?from-embed)
+11. 
 12. [render-functions-101](https://codesandbox.io/s/5vxlz052px?from-embed)
 13. [render-functions-and-components](https://codesandbox.io/s/k05o3npx25?from-embed)
 14. [render-functions-and-children](https://codesandbox.io/s/7w1pr58p6x?from-embed)
