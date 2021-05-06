@@ -181,6 +181,16 @@ watchEffect(() => {
 })
 ```
 
+```
+watch(() => props.selected, (first, second) => {
+  console.log(
+    "Watch props.selected function called with args:",
+    first,
+    second
+  );
+});
+```
+
 ## Chap 6 : ENCAPSULATING EXTERNAL BEHAVIOR PORTALS
 
 `SANBOX CODE`: [encapsulating-external-behavior-portals](https://codesandbox.io/s/vy0k8283o5?from-embed)
@@ -218,6 +228,8 @@ NOTE: <br>
 NOTE: <br>
 ✔ `SLOT` là 1 tính năng cực kỳ hay ho cho việc tái sử dụng tối đa số lần components xuất hiện. <br>
 ✔ Việc kết hợp cùng với class tại `component tag` cũng đem lại sự tiện lợi cho việc tái xử dụng component <br>
+
+<img src="@img-readme/slot_scope.jpg" alt="" width="500px" height="auto"><br/>
 
 ```
 // Tái sử dụng với trường hợp đặt các case cố định cho các vùng của header
@@ -279,12 +291,15 @@ NOTE: <br>
 <div class="nes-dialog abc flex" id="badge-dialog"></div>
 ```
 
-## Chap 10 : EXTENDING COMPONENTS USING COMPOSITION
+## Chap 10 : EXTENDING COMPONENTS USING COMPOSITION (SPECIAL)
 
 `SANBOX CODE`: [extending-components-using-composition](https://codesandbox.io/s/jj8vjjxlk9?from-embed)
 
 NOTE: <br>
 ✔ Chú ý khi sử dụng compositionAPI => cấu trúc `ref & reactive` sẽ gây khó khăn <br>
+✔ Việc tái sử dụng component luôn được đặt lên hàng đầu => hãy xem kỹ ví dụ để thấy được hiệu quả khi sử dụng component trung gian <br>
+
+<img src="@img-readme/reuseable-component.jpg" alt="" width="100%" height="auto"><br/>
 
 ```
 //Sử dụng Object.assign cho custom hook (composables)
@@ -319,7 +334,7 @@ NOTE: <br>
 `SANBOX CODE`: [passing-data-up-using-scoped-slots](https://codesandbox.io/s/nwz1xpkyl0?from-embed)
 
 NOTE: <br>
-✔
+✔ 
 
 
 
