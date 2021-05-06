@@ -334,6 +334,79 @@ NOTE: <br>
 `SANBOX CODE`: [passing-data-up-using-scoped-slots](https://codesandbox.io/s/nwz1xpkyl0?from-embed)
 
 NOTE: <br>
+✔ Khi ta sử dụng data tại `Child` (vì nhiều lý do), mà parent là nơi call `component tag`:
+✔ NEW way: `props` đôi khi có thể truyền dưới dạng function (thay vì data như trước) => Chỉ là cách tham khảo, ít người thích dùng kiểu này vì rườm ra và k flexable <br>
+✔ HIGH RECOMMEND: Sử dụng `slot` như 1 dạng flexiable code, để layout có thể tùy chỉnh theo parent mà vẫn sử dụng data tại child <br> 
+
+<img src="@img-readme/slot-passing.jpg" alt="" width="100%" height="auto"><br/>
+
+```
+======= Sử dụng data tại child như props ===============
+// Parent
+<contact-list :pseudo-slot="({ contact }) => contact.name.first"></contact-list>
+
+// Child
+<div class="child">
+  {{ pseudoSlot({ contact: contact }) }}
+</div>
+```
+
+```
+======= Sử dụng data tại child => passing data ngược lại parent thông qua slot ===============
+// Parent
+// Có thể custom layout như này
+<contact-list>
+  <a slot-scope="{ contact }" :href="`/contacts/${contact.id}`">
+    {{ contact.name.first }}
+  </a>
+</contact-list>
+
+// Hoặc như này
+<contact-list>
+  <div slot-scope="{ contact }">
+    <strong class="user-title">{{ contact.name.first }}</strong>
+  </div>
+</contact-list>
+
+// Child
+<div class="child">
+  <slot :contact="contact"></slot>
+</div>
+```
+
+## Chap 12 : RENDER FUNCTIONS 101
+
+`SANBOX CODE`: [render-functions-101](https://codesandbox.io/s/5vxlz052px?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 13 : RENDER FUNCTIONS AND COMPONENTS
+
+`SANBOX CODE`: [render-functions-and-components](https://codesandbox.io/s/k05o3npx25?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 14 : RENDER FUNCTIONS AND CHILDREN
+
+`SANBOX CODE`: [render-functions-and-children](https://codesandbox.io/s/7w1pr58p6x?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 15 : RENDER FUNCTIONS AND SLOTS
+
+`SANBOX CODE`: [render-functions-and-slots](https://codesandbox.io/s/z2k1j94o8m?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 16 : DATA PROVIDER COMPONENTS
+
+`SANBOX CODE`: [data-provider-components](https://codesandbox.io/s/nk9qr8yz0p?from-embed)
+
+NOTE: <br>
 ✔ 
 
 
@@ -358,12 +431,10 @@ NOTE: <br>
 
 
 
-11. 
-12. [render-functions-101](https://codesandbox.io/s/5vxlz052px?from-embed)
-13. [render-functions-and-components](https://codesandbox.io/s/k05o3npx25?from-embed)
-14. [render-functions-and-children](https://codesandbox.io/s/7w1pr58p6x?from-embed)
-15. [render-functions-and-slots](https://codesandbox.io/s/z2k1j94o8m?from-embed)
-16. [data-provider-components](https://codesandbox.io/s/nk9qr8yz0p?from-embed)
+
+
+
+16. 
 17. [getting-started-with-renderless-ui-components](https://codesandbox.io/s/x1z0myl0p?from-embed)
 18. [passing-data-props-from-renderless-components](https://codesandbox.io/s/k96ljlz7yv?from-embed)
 19. [passing-action-props-from-renderless-components](https://codesandbox.io/s/9l2jwy14mp?from-embed)
