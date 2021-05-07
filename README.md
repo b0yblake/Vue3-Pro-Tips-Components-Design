@@ -1,6 +1,39 @@
 CONTENT
 =================
 
+<div id="handing-the-errors-with-props"></div><br>
+
+## Chap 0 : HANDLING THE ERRORS WITH PROPS
+
+NOTE: <br>
+✔ Khi làm việc với `props`, việc không tin bất cứ data nào truyền vào từ parent là có cơ sở (lỗi API, lỗi logic bên BE, lỗi name file,...) <br>
+✔ Việc `cover các case` xuất hiện với data truyền vào là thực sự cần thiết đối với việc handing errors on production <br>
+✔ Sử dụng các mệnh đề có sẵn: `type` `required` `default` `validator` <br>
+✔ Xảy ra trường hợp, data điền đúng kiểu nhưng bị sai value (sai định dạng, sai kiểu value,...)
+
+<img src="@img-readme/props-cover-errors.jpg" alt="" width="100%" height="auto"><br/>
+<img src="@img-readme/props-cover-validator.jpg" alt="" width="100%" height="auto"><br/>
+
+Extend: <br>
+✔ Vậy chúng ta có thể tạo 1 helper (custom hook) cho việc validator này đúng không nhỉ <br>
+✔ Ex: validator type of images (allow *.jpg || *.png) <br>
+
+```
+// file component want to use helper
+import { validatorImageType } from '../helpers/validatorImageType.js'
+
+// file helper validatorImageType
+
+const validatorImageType = (string) => {
+  
+}
+
+export default validatorImageType
+```
+
+
+
+
 <div id="building-controlled-components"></div><br>
 
 ## Chap 1 : BUILD CONTROLLED COMPONENTS
@@ -334,7 +367,7 @@ NOTE: <br>
 `SANBOX CODE`: [passing-data-up-using-scoped-slots](https://codesandbox.io/s/nwz1xpkyl0?from-embed)
 
 NOTE: <br>
-✔ Khi ta sử dụng data tại `Child` (vì nhiều lý do), mà parent là nơi call `component tag`:
+✔ Khi ta sử dụng data tại `Child` (vì nhiều lý do), mà parent là nơi call `component tag`: <br>
 ✔ NEW way: `props` đôi khi có thể truyền dưới dạng function (thay vì data như trước) => Chỉ là cách tham khảo, ít người thích dùng kiểu này vì rườm ra và k flexable <br>
 ✔ HIGH RECOMMEND: Sử dụng `slot` như 1 dạng flexiable code, để layout có thể tùy chỉnh theo parent mà vẫn sử dụng data tại child <br> 
 
