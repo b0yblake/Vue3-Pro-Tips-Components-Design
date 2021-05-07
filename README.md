@@ -9,9 +9,13 @@ NOTE: <br>
 ✔ Khi làm việc với `props`, việc không tin bất cứ data nào truyền vào từ parent là có cơ sở (lỗi API, lỗi logic bên BE, lỗi name file,...) <br>
 ✔ Việc `cover các case` xuất hiện với data truyền vào là thực sự cần thiết đối với việc handing errors on production <br>
 ✔ Sử dụng các mệnh đề có sẵn: `type` `required` `default` `validator` <br>
-✔ Xảy ra trường hợp, data điền đúng kiểu nhưng bị sai value (sai định dạng, sai kiểu value,...)
 
 <img src="@img-readme/props-cover-errors.jpg" alt="" width="100%" height="auto"><br/>
+
+NOTE: <br>
+✔ Xảy ra trường hợp, data điền đúng kiểu nhưng bị sai value (sai định dạng, sai kiểu value,...) <br>
+✔ Validator dữ liệu có thể gây dài dòng, nhưng sẽ là tuyệt với nếu bạn handling errors ngay từ lúc khởi điểm <br>
+
 <img src="@img-readme/props-cover-validator.jpg" alt="" width="100%" height="auto"><br/>
 
 Extend: <br>
@@ -25,7 +29,7 @@ import { validatorImageType } from '../helpers/validatorImageType.js'
 // file helper validatorImageType
 
 const validatorImageType = (string) => {
-  
+
 }
 
 export default validatorImageType
