@@ -425,28 +425,144 @@ NOTE: <br>
 
 `SANBOX CODE`: [render-functions-101](https://codesandbox.io/s/5vxlz052px?from-embed)
 
-NOTE: <br>
-✔ 
+NOTE: CHÚNG TA CẦN HIỂU ĐỂ SỬ DỤNG 1 CÁCH HIỆU QUẢ <br>
+✔ Using full power of JS (Sử dụng tất cả sức mạnh của JS)
+✔ Dynamically creating `HTML tags` (Tự động tạo các tag HTML)
+✔ Good for `library creators` (Sẽ hiệu quả nếu dùng với các thư viện tự động)
+❌ Sẽ phức tạp hơn khi `lạm dụng` vì 1 số code không cần thiết (html tĩnh, passing only data, ...)
+❌ Lỗi sinh ra trong `im lặng` (silently failed)
+❌ Gây lú lẫn vì `nhiều syntax`
+❌ Lồng vào nhau nhiều thứ chứ không tách bạc như `template`
+🦟 Fix: hãy chia nhỏ các thành phần và sử lý từng phần 1
+
+<img src="@img-readme/render-func.jpg" alt="" width="100%" height="auto"><br/>
+
+```
+//Parent
+<RenderFuncEx heading="'1'" />
+
+//Child
+<script>
+import {
+  h,
+} from 'vue';
+
+export default {
+  props: {
+    heading: {
+      type: Number,
+      required: true,
+      default: 2,
+      validator: propValue => {
+        const isNumber = isNumber(propValue)
+        return isNumber && false
+      }
+    }
+  },
+  setup(props, { context }) {
+
+    return () => h(
+      `h${props.heading}`,
+      {
+        class: 'text-lg title',
+        style: 'color: red',
+      },
+      'Simple Form Example'
+    )
+  }
+}
+</script>
+```
+
+NOTE:
+✔ return () => h(element, attributes, children) <br>
+✔ Có thể sử dụng được tính reactivity của compositionAPI <br>
+✔ Multiple render function là có cơ sở, hãy làm tuần tự <br>
+
+```
+setup(props, { context }) {
+
+  const count = ref(0);
+  const increament = () => {
+    return count.value++
+  }
+
+  return () => h(
+    `h${props.heading}`,
+    {
+      class: 'text-lg title',
+      style: 'color: red',
+      onClick: increament
+    },
+    [
+      'Simple Form Example',
+      h(
+        `h${props.heading + 1}`,
+        {
+          style: 'color: green',
+        },
+        count.value
+      )
+    ]
+  )
+}
+```
+
+<img src="@img-readme/render-func2.jpg" alt="" width="650px" height="auto"><br/>
 
 ## Chap 13 : RENDER FUNCTIONS AND COMPONENTS
 
 `SANBOX CODE`: [render-functions-and-components](https://codesandbox.io/s/k05o3npx25?from-embed)
 
 NOTE: <br>
-✔ 
+✔ `v-model` không thể dùng trong `render-function` => hãy dùng các cú pháp của render-func: https://v3.vuejs.org/guide/render-function.html#v-model <br>
+✔ https://v3.vuejs.org/guide/render-function.html <br>
+
+```
+<script>
+import {
+  h,
+} from 'vue';
+import TextButton from '@/components/common/button/TextButton.vue';
+
+export default {
+  name: "RenderFuncEx",
+  components: {
+    TextButton,
+  },
+  setup(props, { context }) {
+
+    //<TextButton :title="'PressMe'" />
+    return () => h(
+      TextButton,
+      {
+        title: 'Simple Form Example',
+        onClick: () => alert('clicked')
+      }
+      
+    )
+  }
+}
+</script>
+```
 
 ## Chap 14 : RENDER FUNCTIONS AND CHILDREN
 
 `SANBOX CODE`: [render-functions-and-children](https://codesandbox.io/s/7w1pr58p6x?from-embed)
 
 NOTE: <br>
-✔ 
+✔ Vậy thì với các vòng lặp đơn giản (`v-if` `v-for` `v-show` ...) <br>
+
+<img src="@img-readme/render-func-v-if.jpg" alt="" width="650px" height="auto"><br/>
+
+<img src="@img-readme/render-func-v-for.jpg" alt="" width="650px" height="auto"><br/>
 
 ## Chap 15 : RENDER FUNCTIONS AND SLOTS
 
 `SANBOX CODE`: [render-functions-and-slots](https://codesandbox.io/s/z2k1j94o8m?from-embed)
 
 NOTE: <br>
+✔ 
 ✔ 
 
 ## Chap 16 : DATA PROVIDER COMPONENTS
