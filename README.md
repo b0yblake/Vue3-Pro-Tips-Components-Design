@@ -456,47 +456,128 @@ NOTE: <br>
 NOTE: <br>
 ✔ 
 
+## Chap 17 : GETTING STARTED WITH RENDERLESS UI COMPONENTS
 
+`SANBOX CODE`: [getting-started-with-renderless-ui-components](https://codesandbox.io/s/x1z0myl0p?from-embed)
 
+NOTE: <br>
+✔ 
 
+## Chap 18 : PASSING DATA PROPS FROM RENDERLESS COMPONENTS
 
+`SANBOX CODE`: [passing-data-props-from-renderless-components](https://codesandbox.io/s/k96ljlz7yv?from-embed)
 
+NOTE: <br>
+✔ 
 
+## Chap 19 : PASSING ACTION PROPS FROM RENDERLESS COMPONENTS
 
+`SANBOX CODE`: [passing-action-props-from-renderless-components](https://codesandbox.io/s/9l2jwy14mp?from-embed)
 
+NOTE: <br>
+✔ 
 
+## Chap 20 : PASSING BINDING PROPS FROM RENDERLESS COMPONENTS
 
+`SANBOX CODE`: [passing-binding-props-from-renderless-components](https://codesandbox.io/s/l5yoxyv02q?from-embed)
 
+NOTE: <br>
+✔ 
 
+## Chap 21 : RENDERLESS IO COMPONENTS FUNCTIONS AS BINDING PROPS
 
+`SANBOX CODE`: [renderless-ui-components-functions-as-binding-props](https://codesandbox.io/s/kn1nv6ypv?from-embed)
 
+NOTE: <br>
+✔ 
 
+## Chap 22 : IMPLEMENTING ALTERNATE LAYOUTS WITH RENDERLESS COMPONENTS
 
+`SANBOX CODE`: [implementing-alternate-layouts-with-renderless-components](https://codesandbox.io/s/1r789z3nnl?from-embed)
 
+NOTE: <br>
+✔ 
 
+## Chap 23 : CONFIGURING RENDERLESS COMPONENTS
 
+`SANBOX CODE`: [configuring-renderless-components](https://codesandbox.io/s/l9v91jn0zq?from-embed)
 
+NOTE: <br>
+✔ 
 
+## Chap 24 : WRAPPING RENDERLESS COMPONENTS
 
+`SANBOX CODE`: [wrapping-renderless-components](https://codesandbox.io/s/5z5056yoq4?from-embed)
 
+NOTE: <br>
+✔ 
 
+## Chap 25 : ELEMENT QUERIES AS A DATA PROVIDER COMPONENT
 
-16. 
-17. [getting-started-with-renderless-ui-components](https://codesandbox.io/s/x1z0myl0p?from-embed)
-18. [passing-data-props-from-renderless-components](https://codesandbox.io/s/k96ljlz7yv?from-embed)
-19. [passing-action-props-from-renderless-components](https://codesandbox.io/s/9l2jwy14mp?from-embed)
-20. [passing-binding-props-from-renderless-components](https://codesandbox.io/s/l5yoxyv02q?from-embed)
-21. [renderless-ui-components-functions-as-binding-props](https://codesandbox.io/s/kn1nv6ypv?from-embed)
-22. [implementing-alternate-layouts-with-renderless-components](https://codesandbox.io/s/1r789z3nnl?from-embed)
-23. [configuring-renderless-components](https://codesandbox.io/s/l9v91jn0zq?from-embed)
-24. [wrapping-renderless-components](https://codesandbox.io/s/5z5056yoq4?from-embed)
-25. [element-queries-as-a-data-provider-component](https://codesandbox.io/s/20r8wnx44r?from-embed)
-26. [building-compound-components-with-provide-inject](https://codesandbox.io/s/jl6pz69ox3?from-embed)
-27. [building-a-compound-sortable-list-component](https://codesandbox.io/s/o98y1l735y?from-embed)
-28. [building-a-search-select-data-bindings](https://codesandbox.io/s/ykypmk03xj?from-embed)
-29. [building-a-search-select-filtering](https://codesandbox.io/s/oozwlvk36?from-embed)
-30. [building-a-search-select-focus-management](https://codesandbox.io/s/o95oq681l6?from-embed)
-31. [building-a-search-select-making-it-controlled](https://codesandbox.io/s/8n0mnm2v70?from-embed)
-32. [building-a-search-select-keyboard-navigation](https://codesandbox.io/s/n7mw5871v0?from-embed)
-33. [building-a-search-select-click-outside-component](https://codesandbox.io/s/w66mzknr27?from-embed)
-34. [building-a-search-select-integrating-popperjs](https://codesandbox.io/s/vyxl1z5pp5?from-embed)
+`SANBOX CODE`: [element-queries-as-a-data-provider-component](https://codesandbox.io/s/20r8wnx44r?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 26 : BUILDING COMPOUND COMPONENTS WITH PROVIDE INJECT
+
+`SANBOX CODE`: [building-compound-components-with-provide-inject](https://codesandbox.io/s/jl6pz69ox3?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 27 : BUILDING A COMPOUND SORTABLE LIST COMPONENT
+
+`SANBOX CODE`: [building-a-compound-sortable-list-component](https://codesandbox.io/s/o98y1l735y?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 28 : BUILDING A SEARCH SELECT DATA BINDINGS
+
+`SANBOX CODE`: [building-a-search-select-data-bindings](https://codesandbox.io/s/ykypmk03xj?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 29 : BUILDING A SEARCH SELECT FILTERING
+
+`SANBOX CODE`: [building-a-search-select-filtering](https://codesandbox.io/s/oozwlvk36?from-embed)
+NOTE: <br>
+✔ 
+
+## Chap 30 : BUILDING A SEARCH SELECT FOCUS MANAGEMENT
+
+`SANBOX CODE`: [building-a-search-select-focus-management](https://codesandbox.io/s/o95oq681l6?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 31 : BUILDING A SEARCH SELECT MAKING IT CONTROLLED
+
+`SANBOX CODE`: [building-a-search-select-making-it-controlled](https://codesandbox.io/s/8n0mnm2v70?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 32 : BUILDING A SEARCH SELECT KEYBOARD NAVIGATION
+
+`SANBOX CODE`: [building-a-search-select-keyboard-navigation](https://codesandbox.io/s/n7mw5871v0?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 33 : BUILDING A SEARCH SELECT CLICK OUTSIDE COMPONENT
+
+`SANBOX CODE`: [building-a-search-select-click-outside-component](https://codesandbox.io/s/w66mzknr27?from-embed)
+
+NOTE: <br>
+✔ 
+
+## Chap 34 : BUILDING A SEARCH SELECT INTERGRATING POPPERJS
+
+`SANBOX CODE`: [building-a-search-select-integrating-popperjs](https://codesandbox.io/s/vyxl1z5pp5?from-embed)
+
+NOTE: <br>
+✔ 
+
