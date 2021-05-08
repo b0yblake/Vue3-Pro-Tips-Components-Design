@@ -269,7 +269,7 @@ DON'T LET YOURSELF TURN INTO THIS CASE: <br>
 ✔ Button đó có các case `spin` `title` `icon left` `icon right` ,.. <br>
 ✔ Hãy đúng đắn suy nghĩ trước khi làm 1 component <br>
 
-<img src="@img-readme/slot_confused.jpg" alt="" width="500px" height="auto"><br/>
+<img src="@img-readme/slot_confused.jpg" alt="" width="100%" height="auto"><br/>
 
 
 NOTE: <br>
