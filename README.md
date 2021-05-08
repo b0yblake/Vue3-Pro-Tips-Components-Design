@@ -20,6 +20,7 @@ NOTE: <br>
 
 Extend: <br>
 ✔ Vậy chúng ta có thể tạo 1 helper (custom hook) cho việc validator này đúng không nhỉ <br>
+✔ Error mặc định của Vue thường không rõ ràng, chúng ta có thể customize lại message <br>
 ✔ Ex: validator type of images (allow *.jpg || *.png) <br>
 
 ```
@@ -27,14 +28,15 @@ Extend: <br>
 import { validatorImageType } from '../helpers/validatorImageType.js'
 
 // file helper validatorImageType
+const validatorImageType = (propString) => {
+  const hasImagesDirectory = propString.indexOf('/images/') > -1
+  const isPNG = prop.endWith('.png')
+  const isJPG = prop.endWith('.jpeg') || prop.endWith('.jpg')
 
-const validatorImageType = (string) => {
-
+  return hasImagesDirectory && isPNG && isJPG
 }
-
 export default validatorImageType
 ```
-
 
 
 
@@ -261,6 +263,14 @@ NOTE: <br>
 ## Chap 8 : INJECTING CONTENT USING SLOTS
 
 `SANBOX CODE`: [injecting-content-using-slots](https://codesandbox.io/s/8x54ow4vl9?from-embed)
+
+DON'T LET YOURSELF TURN INTO THIS CASE: <br>
+✔ Bạn đinh sloved 1 required đơn giản với nhiều case tại 1 button <br>
+✔ Button đó có các case `spin` `title` `icon left` `icon right` ,.. <br>
+✔ Hãy đúng đắn suy nghĩ trước khi làm 1 component <br>
+
+<img src="@img-readme/slot_confused.jpg" alt="" width="500px" height="auto"><br/>
+
 
 NOTE: <br>
 ✔ `SLOT` là 1 tính năng cực kỳ hay ho cho việc tái sử dụng tối đa số lần components xuất hiện. <br>
