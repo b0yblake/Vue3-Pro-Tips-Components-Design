@@ -546,9 +546,10 @@ export default {
 </script>
 ```
 
-## Chap 14 : RENDER FUNCTIONS AND CHILDREN
+## Chap 14 : RENDER FUNCTIONS AND CHILDREN + Chap 15 : RENDER FUNCTIONS AND SLOTS
 
-`SANBOX CODE`: [render-functions-and-children](https://codesandbox.io/s/7w1pr58p6x?from-embed)
+`SANBOX CODE`: [render-functions-and-children](https://codesandbox.io/s/7w1pr58p6x?from-embed) <br>
+`SANBOX CODE`: [render-functions-and-slots](https://codesandbox.io/s/z2k1j94o8m?from-embed) <br>
 
 NOTE: <br>
 ✔ Vậy thì với các vòng lặp đơn giản (`v-if` `v-for` `v-show` ...) <br>
@@ -557,76 +558,42 @@ NOTE: <br>
 
 <img src="@img-readme/render-func-v-for.jpg" alt="" width="650px" height="auto"><br/>
 
-## Chap 15 : RENDER FUNCTIONS AND SLOTS
-
-`SANBOX CODE`: [render-functions-and-slots](https://codesandbox.io/s/z2k1j94o8m?from-embed)
-
-NOTE: <br>
-✔ 
-✔ 
-
 ## Chap 16 : DATA PROVIDER COMPONENTS
 
 `SANBOX CODE`: [data-provider-components](https://codesandbox.io/s/nk9qr8yz0p?from-embed)
 
-NOTE: <br>
-✔ 
+<img src="@img-readme/slot-renderless.jpg" alt="" width="100%" height="auto"><br/>
 
 ## Chap 17 : GETTING STARTED WITH RENDERLESS UI COMPONENTS
-
-`SANBOX CODE`: [getting-started-with-renderless-ui-components](https://codesandbox.io/s/x1z0myl0p?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 18 : PASSING DATA PROPS FROM RENDERLESS COMPONENTS
-
-`SANBOX CODE`: [passing-data-props-from-renderless-components](https://codesandbox.io/s/k96ljlz7yv?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 19 : PASSING ACTION PROPS FROM RENDERLESS COMPONENTS
-
-`SANBOX CODE`: [passing-action-props-from-renderless-components](https://codesandbox.io/s/9l2jwy14mp?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 20 : PASSING BINDING PROPS FROM RENDERLESS COMPONENTS
-
-`SANBOX CODE`: [passing-binding-props-from-renderless-components](https://codesandbox.io/s/l5yoxyv02q?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 21 : RENDERLESS IO COMPONENTS FUNCTIONS AS BINDING PROPS
-
-`SANBOX CODE`: [renderless-ui-components-functions-as-binding-props](https://codesandbox.io/s/kn1nv6ypv?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 22 : IMPLEMENTING ALTERNATE LAYOUTS WITH RENDERLESS COMPONENTS
-
-`SANBOX CODE`: [implementing-alternate-layouts-with-renderless-components](https://codesandbox.io/s/1r789z3nnl?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 23 : CONFIGURING RENDERLESS COMPONENTS
-
-`SANBOX CODE`: [configuring-renderless-components](https://codesandbox.io/s/l9v91jn0zq?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 24 : WRAPPING RENDERLESS COMPONENTS
 
-`SANBOX CODE`: [wrapping-renderless-components](https://codesandbox.io/s/5z5056yoq4?from-embed)
+`SANBOX CODE`: [getting-started-with-renderless-ui-components](https://codesandbox.io/s/x1z0myl0p?from-embed) <br>
+`SANBOX CODE`: [passing-data-props-from-renderless-components](https://codesandbox.io/s/k96ljlz7yv?from-embed) <br>
+`SANBOX CODE`: [passing-action-props-from-renderless-components](https://codesandbox.io/s/9l2jwy14mp?from-embed) <br>
+`SANBOX CODE`: [passing-binding-props-from-renderless-components](https://codesandbox.io/s/l5yoxyv02q?from-embed) <br>
+`SANBOX CODE`: [renderless-ui-components-functions-as-binding-props](https://codesandbox.io/s/kn1nv6ypv?from-embed) <br>
+`SANBOX CODE`: [implementing-alternate-layouts-with-renderless-components](https://codesandbox.io/s/1r789z3nnl?from-embed) <br>
+`SANBOX CODE`: [configuring-renderless-components](https://codesandbox.io/s/l9v91jn0zq?from-embed) <br>
+`SANBOX CODE`: [wrapping-renderless-components](https://codesandbox.io/s/5z5056yoq4?from-embed) <br>
 
 NOTE: <br>
 ✔ 
+✔ 
+✔ 
+✔ 
+✔ 
+✔ 
+
+
+
+
+
 
 ## Chap 25 : ELEMENT QUERIES AS A DATA PROVIDER COMPONENT
 
