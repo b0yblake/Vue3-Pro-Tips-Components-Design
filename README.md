@@ -595,26 +595,24 @@ NOTE: <br>
 
 
 
+
 ## Chap 25 : ELEMENT QUERIES AS A DATA PROVIDER COMPONENT
 
 `SANBOX CODE`: [element-queries-as-a-data-provider-component](https://codesandbox.io/s/20r8wnx44r?from-embed)
-
-NOTE: <br>
-✔ 
 
 ## Chap 26 : BUILDING COMPOUND COMPONENTS WITH PROVIDE INJECT
 
 `SANBOX CODE`: [building-compound-components-with-provide-inject](https://codesandbox.io/s/jl6pz69ox3?from-embed)
 
 NOTE: <br>
-✔ 
+✔ https://github.com/wnr/element-resize-detector <br>
 
 ## Chap 27 : BUILDING A COMPOUND SORTABLE LIST COMPONENT
 
 `SANBOX CODE`: [building-a-compound-sortable-list-component](https://codesandbox.io/s/o98y1l735y?from-embed)
 
 NOTE: <br>
-✔ 
+✔ https://github.com/SortableJS/Vue.Draggable
 
 ## Chap 28 : BUILDING A SEARCH SELECT DATA BINDINGS
 
