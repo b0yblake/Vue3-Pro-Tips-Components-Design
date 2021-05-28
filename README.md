@@ -1,6 +1,26 @@
 CONTENT
 =================
 
+<div id="the-components-design-patterns"></div><br>
+
+## Chap -1 : THE COMPONENTS DESIGN PATTERNS
+
+NOTE: <br>
+✔ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div id="handing-the-errors-with-props"></div><br>
 
 ## Chap 0 : HANDLING THE ERRORS WITH PROPS
@@ -558,6 +578,61 @@ NOTE: <br>
 
 <img src="@img-readme/render-func-v-for.jpg" alt="" width="650px" height="auto"><br/>
 
+## Chap 15.1: RENDER FUNCTION FACTORY
+
+NOTE: <br>
+✔ Đôi khi, việc sử dụng render function là 1 điều quen thuộc, việc lặp đi lặp lại code sẽ dẫn tới sự nhàm chán, hãy thử factory render function
+✔ Giải quyết được vấn đề về việc lặp code và sử dụng được pattern
+
+```
+// Normal way: in file ProductListing.vue
+<template>
+  <ListingContainer
+    :service="productService"
+  />
+</template>
+
+<script>
+import productService from '../services/product';
+
+import ListingContainer from './ListingContainer';
+
+export default {
+  name: 'ProductListing',
+  components: {
+    ListingContainer,
+  },
+  created() {
+    this.productService = productService;
+  },
+};
+</script>
+```
+
+```
+// Use factory way: in file ProductListing.vue
+<script>
+import containerFactory from './factories/container';
+import productService from '../services/product';
+import ListingContainer from './ListingContainer';
+
+export default containerFactory(ListingContainer, {
+  service: productService
+});
+</script>
+
+// In file factories/container.js
+export default (Component, props) => ({
+  functional: true,
+  props: Component.props,
+  render(h, context) {
+    return h(Component, {
+      props: { ...context.props, ...props },
+    });
+  }
+});
+```
+
 ## Chap 16 : DATA PROVIDER COMPONENTS
 
 `SANBOX CODE`: [data-provider-components](https://codesandbox.io/s/nk9qr8yz0p?from-embed)
@@ -594,8 +669,6 @@ NOTE: <br>
 
 
 
-
-
 ## Chap 25 : ELEMENT QUERIES AS A DATA PROVIDER COMPONENT
 
 `SANBOX CODE`: [element-queries-as-a-data-provider-component](https://codesandbox.io/s/20r8wnx44r?from-embed)
@@ -615,50 +688,27 @@ NOTE: <br>
 ✔ https://github.com/SortableJS/Vue.Draggable
 
 ## Chap 28 : BUILDING A SEARCH SELECT DATA BINDINGS
-
-`SANBOX CODE`: [building-a-search-select-data-bindings](https://codesandbox.io/s/ykypmk03xj?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 29 : BUILDING A SEARCH SELECT FILTERING
-
-`SANBOX CODE`: [building-a-search-select-filtering](https://codesandbox.io/s/oozwlvk36?from-embed)
-NOTE: <br>
-✔ 
-
 ## Chap 30 : BUILDING A SEARCH SELECT FOCUS MANAGEMENT
-
-`SANBOX CODE`: [building-a-search-select-focus-management](https://codesandbox.io/s/o95oq681l6?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 31 : BUILDING A SEARCH SELECT MAKING IT CONTROLLED
-
-`SANBOX CODE`: [building-a-search-select-making-it-controlled](https://codesandbox.io/s/8n0mnm2v70?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 32 : BUILDING A SEARCH SELECT KEYBOARD NAVIGATION
-
-`SANBOX CODE`: [building-a-search-select-keyboard-navigation](https://codesandbox.io/s/n7mw5871v0?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 33 : BUILDING A SEARCH SELECT CLICK OUTSIDE COMPONENT
-
-`SANBOX CODE`: [building-a-search-select-click-outside-component](https://codesandbox.io/s/w66mzknr27?from-embed)
-
-NOTE: <br>
-✔ 
-
 ## Chap 34 : BUILDING A SEARCH SELECT INTERGRATING POPPERJS
 
-`SANBOX CODE`: [building-a-search-select-integrating-popperjs](https://codesandbox.io/s/vyxl1z5pp5?from-embed)
+`SANBOX CODE`: [building-a-search-select-data-bindings](https://codesandbox.io/s/ykypmk03xj?from-embed) <br>
+`SANBOX CODE`: [building-a-search-select-filtering](https://codesandbox.io/s/oozwlvk36?from-embed) <br>
+`SANBOX CODE`: [building-a-search-select-focus-management](https://codesandbox.io/s/o95oq681l6?from-embed) <br>
+`SANBOX CODE`: [building-a-search-select-making-it-controlled](https://codesandbox.io/s/8n0mnm2v70?from-embed) <br>
+`SANBOX CODE`: [building-a-search-select-keyboard-navigation](https://codesandbox.io/s/n7mw5871v0?from-embed) <br>
+`SANBOX CODE`: [building-a-search-select-click-outside-component](https://codesandbox.io/s/w66mzknr27?from-embed) <br>
+`SANBOX CODE`: [building-a-search-select-integrating-popperjs](https://codesandbox.io/s/vyxl1z5pp5?from-embed) <br>
 
 NOTE: <br>
 ✔ 
+✔ 
+✔ 
+✔ 
+✔ 
+
+
 
